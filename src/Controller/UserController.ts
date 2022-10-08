@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import bycrpt from 'bcryptjs'
 import { User } from "../Models/User";
+import { createToken } from "../utils/createToken";
 
 export class UserController{
     async register(req:Request, res:Response){
@@ -23,9 +24,14 @@ export class UserController{
             const user = await User.create({
                 username, 
                 email, 
-                password:hash
+                password:hash,
             })
-            return res.send(user)
+            return res.json({
+                _id: user.id,
+                username: user.username,
+                email: user.password,
+                token: createToken(user.id)
+            })
 
         } catch (error) {
             return res.send(error)
@@ -34,7 +40,6 @@ export class UserController{
 
     async login(req:Request, res:Response){
         const {email, password} = req.body
-
         const user = await User.findOne({email})
 
             if(!user){
@@ -43,14 +48,19 @@ export class UserController{
 
             const checkPassword = await bycrpt.compareSync(password, user.password) // true
 
-            if(checkPassword){
-                return res.json({
-                    _id: user.id,
-                    username: user.username,
-                    email: user.password
-                })
+            if(!checkPassword){
+                return res.status(400).send({message: 'Inavlid Password'})
             }
-            return res.status(400).send({message: 'Inavlid Password'})
-            
+            return res.json({
+                _id: user.id,
+                username: user.username,
+                email: user.password,
+                token: createToken(user.id)
+            }) 
     }
+
+    async getPosts(req:Request, res:Response){
+        return res.json(req.user)
+    }
+       
 }
