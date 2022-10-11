@@ -1,26 +1,32 @@
-/* import { Schema, model, connect } from 'mongoose';
+import { Schema, model, connect, Types } from 'mongoose';
 
 // 1. Create an interface representing a document in MongoDB.
 interface IPost{
+    name: string,
     image: string,
-    pet: string
-    description: string,
+    description?: string,
+    user: Types.ObjectId
 }
 
 // 2. Create a Schema corresponding to the document interface.
-const userSchema = new Schema<IPost>({
-    username:{
+const postSchema = new Schema<IPost>({
+    name: {
+        type: String,
+        required: true,
+    },
+    image: {
         type: String,
         required: true
     },
-    email:{
+    description: {
         type: String,
-        required: true
+        required: false
     },
-    password:{
-        type: String,
-        required: true
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
+  
 })
 
-export const User = model<IUser>('User', userSchema) */
+export const Post = model<IPost>('Post', postSchema)
