@@ -41,4 +41,16 @@ export class PostController{
 
         return res.json(showPost)
     }
+
+    async PostById(req:Request<{id: number}>, res: Response){
+        const {id} = req.params
+
+        const post = await Post.findById(id)
+
+        if(!post){
+            return res.status(400).send({message: "post does not exists"})
+        }
+
+        return res.status(200).json(post)
+    }
 }

@@ -12,6 +12,7 @@ router.post("/register", userController.register)
 router.post("/login", userController.login)
 router.post("/post/:userId", postController.Create)
 router.get("/posts", postController.Show)
+router.get("/post/:id", postController.PostById)
 
 
 export default router
