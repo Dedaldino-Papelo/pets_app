@@ -8,6 +8,7 @@ module.exports = {
       gridTemplateColumns: {
         // Simple 16 column grid
        '3': 'repeat(3, 1fr)',
+       '2': '36rem 20rem',
       },
       fontFamily: {
         'sans': 'inter, sans-serif'

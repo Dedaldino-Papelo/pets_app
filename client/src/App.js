@@ -6,6 +6,7 @@ import Header from './Components/Header/Header';
 import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
 import Homepage from './Pages/Homepage';
+import PostModal from './Pages/PostModal';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Homepage />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/posts/:id' element={<PostModal />} />
         </Routes>
       </Router>
     </>
