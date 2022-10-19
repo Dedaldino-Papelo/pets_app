@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    zIndex: {
+      '100': '1000'
+    },
     extend: {
       gridTemplateColumns: {
         // Simple 16 column grid

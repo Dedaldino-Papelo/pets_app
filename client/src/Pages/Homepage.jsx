@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import Card from '../Components/Card'
-import PostModal from './PostModal'
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import Card from "../Components/Card"
+import { fetchPost } from "../redux/post/postSlice"
+import PostModal from "./PostModal"
 
 const Homepage = () => {
-    const [posts, setPosts] = useState([])
+  const dispatch = useDispatch()
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/posts')
-        .then((res) =>{
-            setPosts(res.data)
-        })
-        .catch((error) => console.log(error))
-    }, [])
+  const postReducer = useSelector((state) =>state.postReducer)
+  const {posts,hidden} = postReducer
+
+
+  useEffect(() => {
+    dispatch(fetchPost())
+  }, [dispatch])
+
   return (
     <>
     <div className="max-w-[960px] mt-0 mx-auto p-4 grid grid-cols-3 gap-2">
         {
-           posts.map((post) => (
+          posts && posts.map((post) => (
             <Card key={post._id} posts={post} />
            ))
         }
     </div>
-    <PostModal />
+    {!hidden && <PostModal />}
     </>
   )
 }

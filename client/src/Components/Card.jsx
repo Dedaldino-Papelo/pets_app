@@ -1,10 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { openPopUp } from '../redux/post/postSlice'
 
 const Card = ({posts}) => {
+
+  const dispatch = useDispatch()
+
   return (
     <div className='border'>
-      <Link to={`posts/${posts._id}`}>
+      <Link onClick={() => dispatch(openPopUp()) }>
         <img className='block rounded object-cover object-center w-full h-full' src={posts.image} alt={posts.name} />
       </Link>
     </div>

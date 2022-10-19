@@ -1,19 +1,21 @@
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import { useDispatch } from "react-redux"
+import { closePopUp } from "../redux/post/postSlice"
+
 
 const PostModal = () => {
-    const {id} = useParams()
+
+  const dispatch = useDispatch()
 
   return (
-    <div>
-      <div className='max-w-[960px] mt-0 mx-auto p-4 border grid grid-cols-2'>
+    <div className="fixed bg-black bg-opacity-50 inset-0" onClick={() => dispatch(closePopUp())}>
+      <div className='max-w-[960px] bg-white mt-36 mx-auto grid grid-cols-2'>
       <div>
         <img src={process.env.PUBLIC_URL + "alin-surdu-j5GCqQM3eYA-unsplash.jpg"} alt='ss' />
       </div>
       <div>
         <div>
           <p className='flex justify-between'>
-            <spn>@Cat</spn>
+            <span>@Cat</span>
             <span>151134</span>
           </p>
           <h1 className='text-2xl font-bold text-violet-700'>John Doe</h1>
