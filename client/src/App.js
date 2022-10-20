@@ -14,10 +14,13 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path='/' element={<Homepage />} />
+
+          <Route path='/' element={<Homepage />} >
+            <Route path='/posts/:id' element={<PostModal />} /> 
+          </Route>
+
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/posts/:id' element={<PostModal />} />
         </Routes>
       </Router>
     </>

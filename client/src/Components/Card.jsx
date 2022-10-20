@@ -7,10 +7,16 @@ const Card = ({posts}) => {
 
   const dispatch = useDispatch()
 
+  const handlePopUp = () => {
+    dispatch(openPopUp())
+  }
+
   return (
     <div className='border'>
-      <Link onClick={() => dispatch(openPopUp()) }>
-        <img className='block rounded object-cover object-center w-full h-full' src={posts.image} alt={posts.name} />
+      <Link to={`/posts/${posts._id}`} onClick={handlePopUp}>
+        <img 
+          className='block rounded object-cover object-center w-full h-full' 
+            src={posts.image} alt={posts.name} />
       </Link>
     </div>
   )
