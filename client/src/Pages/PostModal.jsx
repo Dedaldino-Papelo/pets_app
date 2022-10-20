@@ -18,11 +18,11 @@ const PostModal = () => {
 
   return (
     <div className="fixed bg-black bg-opacity-50 inset-0" onClick={() => dispatch(closePopUp())}>
-      <div className='max-w-[960px] bg-white mt-36 mx-auto grid grid-cols-2'>
-      <div>
-        <img src={post.image} alt='ss' />
-      </div>
-      <div>
+      <div className='max-w-[960px] h-[30rem] overflow-hidden bg-white mt-36 mx-auto grid grid-cols-2'>
+        <div className="">
+          <img src={post.image} alt={post.name} />
+        </div>
+        <div>
         <div>
           <p className='flex justify-between'>
             <span>@Cat</span>
