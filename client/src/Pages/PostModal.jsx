@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+import Loader from "../Components/Loader"
 import { closePopUp, fetchPostById } from "../redux/post/postSlice"
 
 
@@ -10,17 +11,18 @@ const PostModal = () => {
   const dispatch = useDispatch()
 
   const PostReducer = useSelector(state => state.postReducer)
-  const {post} = PostReducer
+  const {post, loadingModal} = PostReducer
 
   useEffect(() => {
     dispatch(fetchPostById(id))
   }, [dispatch,id])
 
   return (
-    <div className="fixed bg-black bg-opacity-50 inset-0" onClick={() => dispatch(closePopUp())}>
-      <div className='max-w-[960px] h-[30rem] overflow-hidden bg-white mt-36 mx-auto grid grid-cols-2'>
+    <div className="fixed bg-black z-100 bg-opacity-50 inset-0" onClick={() => dispatch(closePopUp())}>
+          {loadingModal && <Loader />}
+      <div className='max-w-[940px] rounded-md h-[32rem] overflow-hidden bg-white mt-32 mx-auto grid grid-cols-2'>
         <div className="">
-          <img src={post.image} alt={post.name} />
+          <img src={post.image} alt={post.name} className="w-full h-full object-cover"/>
         </div>
         <div>
         <div>

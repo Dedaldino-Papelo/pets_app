@@ -28,7 +28,9 @@ export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
     posts: [],
     error: '',
     hidden:true,
-    post: {}
+
+    post: {},
+    loadingModal: false
  }
 
  export const postSlice = createSlice({
@@ -60,15 +62,15 @@ export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
         })
          //========================================================
          builder.addCase(fetchPostById.pending, (state) => {
-            state.loading = true
+            state.loadingModal = true
          })
          builder.addCase(fetchPostById.fulfilled, (state, action) => {
-            state.loading = false
+            state.loadingModal = false
             state.post = action.payload
             state.error = ''
          })
          builder.addCase(fetchPostById.rejected, (state, action) => {
-            state.loading = false
+            state.loadingModal = false
             state.post = {}
             state.error = action.payload
          })
