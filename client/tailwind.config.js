@@ -18,7 +18,15 @@ module.exports = {
       },
       fontFamily: {
         'sans': 'inter, sans-serif'
-      }
+      },
+      animation:{
+        'scaileUp': 'scaileUp 0.3s 0s forwards',
+      },
+      keyframes: {
+        scaileUp: {
+          '100%': { transform: 'scale(1)'},
+        }
+      },
     },
   },
   plugins: [],

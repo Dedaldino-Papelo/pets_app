@@ -20,7 +20,7 @@ const PostModal = () => {
   return (
     <div className="fixed bg-black z-100 bg-opacity-50 inset-0" onClick={() => dispatch(closePopUp())}>
           {loadingModal && <Loader />}
-      <div className='max-w-[940px] rounded-md h-[32rem] overflow-hidden bg-white mt-32 mx-auto grid grid-cols-2'>
+      <div className='max-w-[940px] transform scale-90 animate-scaileUp rounded-md h-[32rem] overflow-hidden bg-white mt-32 mx-auto grid grid-cols-2'>
         <div className="">
           <img src={post.image} alt={post.name} className="w-full h-full object-cover"/>
         </div>
