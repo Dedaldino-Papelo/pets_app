@@ -1,28 +1,26 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
 import Message from '../../Components/Header/Message'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../../redux/user/userSlice'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [msg, setMsg] = useState('')
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const SubmitHandler = async (e) => {
+  const SubmitHandler = async(e) => {
     e.preventDefault()
-
     try {
-      const res = await axios.post('http://localhost:8000/login', {
-        email,
-        password
-      })
-      console.log(res.data)
-
+      await dispatch(loginUser({email, password})).unwrap()
+      navigate('/')
     } catch (error) {
-      setMsg(error.response.data.message)
-      console.log(error.response.data.message)
+      setMsg(error)
     }
+
 }
 
   return (

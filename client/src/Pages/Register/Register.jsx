@@ -1,41 +1,41 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import Message from '../../Components/Header/Message'
+import { registerUser } from '../../redux/user/userSlice'
 
 const Register = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [msg, setMsg] = useState('')
   const [alert, setAlert] = useState('')
+  const [msg, setMsg] = useState('')
 
-    const SubmitHandler = (e) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+
+    const SubmitHandler = async(e) => {
         e.preventDefault()
-
         if(password !== confirmPassword){
           return setAlert("Password don't match")
         }
-        axios.post('http://localhost:8000/register', {
-          username,
-          email,
-          password
-        }).then((res) => {
-          console.log(res)
-        }).catch((error) => {
-          if(error.response){
-            setMsg(error.response.data.message)
-            console.log(error.response.data)
-          }
-        })    
+        try {
+          await dispatch(registerUser({username,email,password})).unwrap()
+          navigate('/') 
+        } catch (error) {
+          setMsg(error)
+        }   
     }
 
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='w-96'>
+
       {alert ? <Message variant= 'danger'>{alert}</Message>: ''}
         {msg ? <Message variant= 'danger'>{msg}</Message>: ''}
+
         <h1 className='text-3xl font-bold mb-8'>Create an Account</h1>
         <form className='flex gap-2 flex-col' onSubmit={SubmitHandler}>
           <input 

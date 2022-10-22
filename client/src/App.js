@@ -7,6 +7,7 @@ import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
 import Homepage from './Pages/Homepage';
 import PostModal from './Pages/PostModal';
+import Profile from './Pages/Profile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/user/profile' element={<Profile />} />
         </Routes>
       </Router>
     </>

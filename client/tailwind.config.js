@@ -5,7 +5,8 @@ module.exports = {
   ],
   theme: {
     zIndex: {
-      '100': '1000'
+      '1000': '1000',
+      '100': '100'
     },
     extend: {
       gridTemplateColumns: {

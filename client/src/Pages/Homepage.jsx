@@ -19,7 +19,7 @@ const Homepage = () => {
   return (
     <>
     {loading && <Loader />}
-    <div className="max-w-[960px] mt-0 mx-auto p-4 grid grid-cols-3 gap-2">
+    <div className="max-w-[960px] mt-16 mx-auto p-4 grid grid-cols-3 gap-2">
         {
           posts && posts.map((post) => (
             <Card key={post._id} posts={post} />
