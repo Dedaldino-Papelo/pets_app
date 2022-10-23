@@ -45,7 +45,7 @@ export class PostController{
     async PostById(req:Request, res: Response){
         const {id} = req.params
 
-        const post = await Post.findById(id)
+        const post = await Post.findById(id).populate('user').exec()
         
         if(!post){
             return res.status(400).send({message: "post does not exists"})

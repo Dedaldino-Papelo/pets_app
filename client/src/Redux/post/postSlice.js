@@ -13,7 +13,6 @@ export const fetchPost = createAsyncThunk('post/fetchposts', async () => {
 )
 
 export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
-    console.log("id", id)
     try {
         const res = await axios.get(`http://localhost:8000/post/${id}`)
         return res.data

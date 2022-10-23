@@ -21,7 +21,7 @@ module.exports = {
         'sans': 'inter, sans-serif'
       },
       animation:{
-        'scaileUp': 'scaileUp 0.3s 0s forwards',
+        'scaileUp': 'scaileUp 0.4s forwards',
       },
       keyframes: {
         scaileUp: {
