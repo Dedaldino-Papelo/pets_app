@@ -1,6 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+export const createPost = createAsyncThunk('post/create', 
+async({name, image,description,userId},{rejectWithValue}) => {
+    try {
+        await axios.post(`http://localhost:8000/post/${userId}`,{
+            name, 
+            image,
+            description
+        })
+        
+    } catch (error) {
+        return rejectWithValue(error.response.data.message)
+    }
+  }
+)
+
 export const fetchPost = createAsyncThunk('post/fetchposts', async () => {
     try {
         const res = await axios.get('http://localhost:8000/posts')
@@ -29,7 +44,10 @@ export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
     hidden:true,
 
     post: {},
-    loadingModal: false
+    loadingModal: false,
+
+    postLoading: false,
+    postError: ''
  }
 
  export const postSlice = createSlice({
@@ -72,6 +90,19 @@ export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
             state.loadingModal = false
             state.post = {}
             state.error = action.payload
+         })
+         //=============================================================
+         builder.addCase(createPost.pending, (state) => {
+            state.postLoading = true
+         })
+         builder.addCase(createPost.fulfilled, (state, action) => {
+            state.postLoading = false
+            state.postError = ''
+         })
+         builder.addCase(createPost.rejected, (state, action) => {
+            state.postLoading = false
+            state.postError = action.payload
+            console.log( action.payload)
          })
    }
  })

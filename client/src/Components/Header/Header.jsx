@@ -16,7 +16,7 @@ const Header = () => {
         <div className='flex'>
           {
             users.username ? (
-              <Link to='/user/profile'>{users.username}</Link>
+              <Link to='user/profile'>{users.username}</Link>
             ): (
               <>
               <Link to='/login' className='mr-2'>Login</Link>

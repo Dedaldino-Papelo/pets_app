@@ -12,7 +12,7 @@ const Card = ({posts}) => {
   }
 
   return (
-    <div className='border'>
+    <div className=''>
       <Link to={`/posts/${posts._id}`} onClick={handlePopUp}>
         <img 
           className='block rounded object-cover object-center w-full h-full' 
