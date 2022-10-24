@@ -32,13 +32,13 @@ const Login = () => {
         <h1 className='text-3xl font-bold mb-8'>Login to your account</h1>
         <form className='flex gap-2 flex-col' onSubmit={SubmitHandler}>
 
-            <input className='bg-slate-200 py-3 px-4 rounded' 
+            <input className='bg-slate-200 py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-violet-500' 
               type='text' 
               placeholder='Email'
               onChange={(e) => setEmail(e.target.value)}  
               />
 
-            <input className='bg-slate-200 py-3 px-4 rounded' 
+            <input className='bg-slate-200 py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-violet-500' 
               type='password' 
               placeholder='Password'
               onChange={(e) => setPassword(e.target.value)} 

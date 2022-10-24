@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import Card from "../Components/Card"
 import Loader from "../Components/Loader"
 import { fetchPost } from "../redux/post/postSlice"
@@ -8,22 +7,14 @@ import PostModal from "./PostModal"
 
 const Homepage = () => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const postReducer = useSelector((state) =>state.postReducer)
   const {posts,hidden,loading} = postReducer
 
-  const userReducer = useSelector((state) =>state.userReducer)
-  const {users} = userReducer
-
 
   useEffect(() => {
-    if(users && !users.username){
-       return navigate('/login')
-    }
     dispatch(fetchPost())
-    
-  }, [dispatch,navigate,users.username,users])
+  }, [dispatch])
 
   return (
     <>

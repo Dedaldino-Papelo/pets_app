@@ -9,6 +9,7 @@ import Homepage from './Pages/Homepage';
 import PostModal from './Pages/PostModal';
 import Profile from './Pages/Profile';
 import PostPhoto from './Components/PostPhoto';
+import PrivateRoutes from './Components/utils/PrivateRoutes';
 
 function App() {
   return (
@@ -17,16 +18,21 @@ function App() {
         <Header />
         <Routes>
 
+        <Route element={<PrivateRoutes />} >
           <Route path='/' element={<Homepage />} >
             <Route path='posts/:id' element={<PostModal />} /> 
           </Route>
+        </Route>
 
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
 
-          <Route path='user/profile' element={<Profile />}>
-            <Route path='post' element={<PostPhoto />} /> 
+          <Route element={<PrivateRoutes />} >
+            <Route path='user/profile' element={<Profile />}>
+              <Route path='post' element={<PostPhoto />} /> 
+            </Route>
           </Route>
+
         </Routes>
       </Router>
     </>
