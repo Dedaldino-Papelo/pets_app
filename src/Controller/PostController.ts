@@ -42,15 +42,28 @@ export class PostController{
         return res.json(showPost)
     }
 
-    async PostById(req:Request, res: Response){
+    async getPostById(req:Request, res: Response){
         const {id} = req.params
 
         const post = await Post.findById(id).populate('user').exec()
         
         if(!post){
-            return res.status(400).send({message: "post does not exists"})
+            return res.status(400).json({message: "post does not exists"})
         }
 
         return res.status(200).json(post)
+    }
+
+    //Delete Post
+    async delete(req:Request, res:Response){
+        const {id} = req.params
+
+        const findPost = await Post.findById(id)
+
+        if(!findPost){
+            return res.status(400).json({message: 'Post does not exists'})
+        }
+        await Post.deleteOne(findPost as any)
+        return res.status(200).send({message: 'Post deleted'})
     }
 }

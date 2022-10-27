@@ -12,7 +12,7 @@ const PostModal = () => {
   const navigate = useNavigate()
 
   const PostReducer = useSelector(state => state.postReducer)
-  const {post, loadingModal,deleteLoading} = PostReducer
+  const {post, loadingModal} = PostReducer
 
   const userReducer = useSelector(state=> state.userReducer)
   const {users} = userReducer
@@ -57,7 +57,7 @@ const PostModal = () => {
               className="text-red-700 cursor-pointer hover:text-red-500">
                 delete
                 </span>
-                
+
           ): ''}
 
           </p>
