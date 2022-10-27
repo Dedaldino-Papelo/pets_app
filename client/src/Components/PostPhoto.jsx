@@ -13,7 +13,6 @@ const PostPhoto = () => {
 
   const userReducer = useSelector((state) =>state.userReducer)
   const {users} = userReducer
-  console.log(users)
 
   const HandleSubmit = async(e) => {
     e.preventDefault()

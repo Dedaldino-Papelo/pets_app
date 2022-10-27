@@ -37,6 +37,16 @@ export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
     }
 })
 
+export const deletePost = createAsyncThunk('post/delete', async (id, {rejectWithValue}) => {
+    try {
+        await axios.delete(`http://localhost:8000/post/${id}`)
+
+    } catch (error) {
+        console.log(error)
+        return rejectWithValue(error.response.data.message)
+    }
+})
+
  const initialState = {
     loading: false,
     posts: [],
@@ -47,7 +57,10 @@ export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
     loadingModal: false,
 
     postLoading: false,
-    postError: ''
+    postError: '',
+
+    deleteLoading: false,
+    errorDelete: ''
  }
 
  export const postSlice = createSlice({
@@ -103,6 +116,18 @@ export const fetchPostById = createAsyncThunk('post/fetchById', async (id) => {
             state.postLoading = false
             state.postError = action.payload
             console.log( action.payload)
+         })
+         //=============================================================
+         builder.addCase(deletePost.pending, (state) => {
+            state.deleteLoading = true
+         })
+         builder.addCase(deletePost.fulfilled, (state, action) => {
+            state.deleteLoading = false
+            state.errorDelete = ''
+         })
+         builder.addCase(deletePost.rejected, (state, action) => {
+            state.postLoading = false
+            state.errorDelete = action.payload
          })
    }
  })

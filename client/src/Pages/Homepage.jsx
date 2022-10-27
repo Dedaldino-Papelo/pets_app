@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Outlet } from "react-router-dom"
 import Card from "../Components/Card"
 import Loader from "../Components/Loader"
 import { fetchPost } from "../redux/post/postSlice"
@@ -26,7 +27,8 @@ const Homepage = () => {
            ))
         }
     </div>
-    {!hidden && <PostModal />}
+    {posts.length === 0 && <p className="text-center">Não Existem Posts</p>}
+    {!hidden && <Outlet />}
     </>
   )
 }
