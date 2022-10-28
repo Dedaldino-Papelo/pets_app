@@ -17,6 +17,8 @@ const PostModal = () => {
   const userReducer = useSelector(state=> state.userReducer)
   const {users} = userReducer
 
+/*   const userId = users ? users._id: '' */
+
   useEffect(() => {
     dispatch(fetchPostById(id))
   }, [dispatch,id])
@@ -51,14 +53,12 @@ const PostModal = () => {
           <p className='flex mb-4 justify-between'>
             <span className="text-gray-400">by: {post.user ? post.user.username: ''}</span>
 
-          {post.user._id === users._id ? (
-
+          {post.user && post.user._id === users._id &&
             <span onClick={() => HandleDelete(post._id)} 
               className="text-red-700 cursor-pointer hover:text-red-500">
                 delete
-                </span>
-
-          ): ''}
+                </span> 
+          }
 
           </p>
           <h1 className='text-3xl mb-4 font-bold text-violet-700'>{post.name}</h1>
