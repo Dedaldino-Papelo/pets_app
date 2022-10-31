@@ -1,9 +1,9 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 
 interface IComment {
     text: string;
-    user: Schema.Types.ObjectId;
-    post: Schema.Types.ObjectId;
+    user: Types.ObjectId;
+    post: Types.ObjectId;
   }
 
   const commentSchema = new Schema<IComment>({

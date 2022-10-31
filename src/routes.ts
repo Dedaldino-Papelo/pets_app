@@ -18,7 +18,8 @@ router.get("/posts", postController.Show)
 router.get("/post/:id", postController.getPostById)
 router.delete("/post/:id", postController.delete)
 
-router.get("/post/:id/comment", commentController.create)
+router.post("/post/:id/comment", protect ,commentController.create)
+router.get("/posts/comments", commentController.Show)
 
 
 export default router
