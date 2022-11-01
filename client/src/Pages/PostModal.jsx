@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import Loader from "../Components/Loader"
+import { fetchPostComments } from "../redux/comment/commentSlice"
 import { closePopUp, deletePost, fetchPostById } from "../redux/post/postSlice"
 
 
@@ -17,10 +18,10 @@ const PostModal = () => {
   const userReducer = useSelector(state=> state.userReducer)
   const {users} = userReducer
 
-/*   const userId = users ? users._id: '' */
 
   useEffect(() => {
     dispatch(fetchPostById(id))
+    dispatch(fetchPostComments())
   }, [dispatch,id])
 
   const HandleDelete = async (id) => {
