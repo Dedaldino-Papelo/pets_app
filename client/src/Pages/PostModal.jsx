@@ -54,7 +54,7 @@ const PostModal = () => {
         <div className="">
           <img src={post.image} alt={post.name} className="w-full h-full object-cover"/>
         </div>
-        <div>
+        <div className="content">
         <div className="p-8">
           <p className='flex mb-4 justify-between'>
             <span className="text-gray-400">by: {post.user ? post.user.username: ''}</span>
@@ -75,6 +75,8 @@ const PostModal = () => {
             ))
           }
         </div>
+        
+        <div className="form">
         <form className="flex justify-center items-center flex-wrap gap-2 m-2">
             <textarea 
               className="bg-gray-200 p-2 rounded resize-none outline-none" 
@@ -82,7 +84,8 @@ const PostModal = () => {
               </textarea>
             <button className="bg-violet-700 py-2 px-4 text-white rounded hover:bg-violet-600 ">Drop it!</button>
           </form>
-      </div>
+        </div>
+        </div>
     </div>
     </div>
     
