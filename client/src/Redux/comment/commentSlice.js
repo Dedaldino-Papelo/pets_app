@@ -1,6 +1,27 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+export const createComment = createAsyncThunk('comment/createComment', 
+  async ({commentText,id}, { getState, }) => {
+      try {
+        const {userReducer: {users: {token}}} = getState()
+
+        await axios.post(`http://localhost:8000/post/${id}/comment`,{
+          text: commentText,
+        }, {
+          headers: {
+            Authorization: `bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        })
+       
+      } catch (error) {
+        console.log(error.response)
+      }
+    }
+  )
+
+
 export const fetchPostComments = createAsyncThunk('comment/fetchComments', 
 async () => {
       try {

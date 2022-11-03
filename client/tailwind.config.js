@@ -9,10 +9,13 @@ module.exports = {
       '100': '100'
     },
     extend: {
+      gridTemplateRows: {
+        'layout': 'auto 1fr auto',
+      },
       gridTemplateColumns: {
         // Simple 16 column grid
        '3': 'repeat(3, 1fr)',
-       '2': '36rem 20rem',
+       '2': '36rem 22.75rem',
       },
       gridTemplateRows: {
         'layout': 'auto 5fr auto'
