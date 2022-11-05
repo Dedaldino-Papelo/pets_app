@@ -22,7 +22,7 @@ const PostModal = () => {
   const { users } = userReducer
 
   const comment = useSelector(state => state.commentReducer)
-  const { comments, loading } = comment
+  const { comments, loading,commentLoading } = comment
 
 
   useEffect(() => {
