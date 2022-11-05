@@ -50,6 +50,8 @@ async (id = null, {fulfillWithValue, rejectWithValue}) => {
     extraReducers: (builder) => {
       builder.addCase(fetchPostComments.pending, (state) => {
           state.loading = true
+          state.comments = []
+          state.error = ''
         })
 
         builder.addCase(fetchPostComments.fulfilled, (state, action) => {

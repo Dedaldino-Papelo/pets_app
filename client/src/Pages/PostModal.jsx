@@ -40,7 +40,7 @@ const PostModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(createComment({commentText, id})).unwrap()
+    await dispatch(createComment({commentText, id}))
     setCommentText("")
 }
 
@@ -74,10 +74,11 @@ const PostModal = () => {
 
           <div className="body px-8 overflow-auto">
             {
-                comments.map(comment => (
-                  <Comments key={comment._id} comment={comment} />
-                ))
-              }
+              comments.map(comment => 
+                  comment.post === post._id ? <Comments key={comment._id} comment={comment} />
+                  : '') 
+            }
+
           </div>
 
           <div className="footer">
