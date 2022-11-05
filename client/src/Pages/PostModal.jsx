@@ -22,8 +22,7 @@ const PostModal = () => {
   const { users } = userReducer
 
   const comment = useSelector(state => state.commentReducer)
-  const { comments, loading,commentLoading } = comment
-
+  const { comments, loading } = comment
 
   useEffect(() => {
     dispatch(fetchPostById(id))
@@ -39,9 +38,9 @@ const PostModal = () => {
     }
   }
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    dispatch(createComment({commentText, id}))
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await dispatch(createComment({commentText, id})).unwrap()
     setCommentText("")
 }
 

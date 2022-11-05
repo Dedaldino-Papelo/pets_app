@@ -24,14 +24,14 @@ export const createComment = createAsyncThunk('comment/createComment',
 
 
 export const fetchPostComments = createAsyncThunk('comment/fetchComments', 
-async () => {
+async (id = null, {fulfillWithValue, rejectWithValue}) => {
       try {
         
         const res = await axios.get('http://localhost:8000/posts/comments')
-        return res.data
+        return fulfillWithValue(res.data)
        
       } catch (error) {
-        console.log(error.response)
+        rejectWithValue(error.response.data.message)
       }
     }
   )
@@ -41,8 +41,7 @@ async () => {
     loading: false,
     error: '',
     commentLoading: false,
-    errorComment: '',
-    comment: {}
+    errorComment: ''
   }
 
    const commentSlice = createSlice({
@@ -71,14 +70,13 @@ async () => {
 
         builder.addCase(createComment.fulfilled, (state, action) => {
           state.commentLoading = false
-          state.comment = action.payload
+          state.comments.push(action.payload)
           state.errorComment = ''
-          console.log(action.payload)
         })
 
         builder.addCase(createComment.rejected, (state, action) => {
         state.commentLoading = false
-        state.comment = {}
+        state.comments = []
         state.errorComment = action.payload
         })
     }
