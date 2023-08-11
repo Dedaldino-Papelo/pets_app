@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom"
 import Card from "../Components/Card"
 import Loader from "../Components/Loader"
 import { fetchPost } from "../redux/post/postSlice"
-import PostModal from "./PostModal"
 
 const Homepage = () => {
   const dispatch = useDispatch()

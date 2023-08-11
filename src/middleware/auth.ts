@@ -7,7 +7,8 @@ type JwtPayload = {
 }
 
 const protect = async(req: Request,res: Response,next: NextFunction) => {
-    const {authorization} = req.headers
+    const { authorization } = req.headers
+
     let token
 
     if(!authorization){
@@ -19,7 +20,7 @@ const protect = async(req: Request,res: Response,next: NextFunction) => {
     
         const { id } = jwt.verify(token, process.env.JWT_TOKEN as string) as JwtPayload
     
-        const user = await User.findOne({id})
+        const user = await User.findById(id)
     
         if(!user){
             return res.status(400).send({message: 'Not Authorized'})

@@ -81,7 +81,7 @@ async (id = null, {fulfillWithValue, rejectWithValue}) => {
         state.comments = []
         state.errorComment = action.payload
         })
-    }
+     }
   })
 
   export default commentSlice.reducer

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 export class mongoDB {
-    connect(){
+    connect() {
         mongoose.connect('mongodb://localhost:27017/pets_app').then(() => {
             console.log("Connected")
         }).catch((error) => {

@@ -11,7 +11,6 @@ export class UserController{
             return res.send({message: 'All fields are required'})
         }
 
-        //Hash the password bcrypt
         const hash = bycrpt.hashSync(password)
     
         try {
