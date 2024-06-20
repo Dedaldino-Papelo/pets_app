@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { openPopUp } from '../redux/post/postSlice'
+import { openPopUp } from '../Redux/post/postSlice'
 
 const Card = ({posts}) => {
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Outlet } from "react-router-dom"
 import Card from "../Components/Card"
 import Loader from "../Components/Loader"
-import { fetchPost } from "../redux/post/postSlice"
+import { fetchPost } from "../Redux/post/postSlice"
 
 const Homepage = () => {
   const dispatch = useDispatch()

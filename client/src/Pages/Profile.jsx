@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
-import { logout } from '../redux/user/userSlice'
+import { logout } from '../Redux/user/userSlice'
 
 const Profile = () => {
     

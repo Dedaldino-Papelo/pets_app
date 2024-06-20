@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { createPost } from '../redux/post/postSlice'
+import { createPost } from '../Redux/post/postSlice'
 
 const PostPhoto = () => {
   const [name, setName] = useState('')

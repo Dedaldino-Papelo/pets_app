@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Message from "../../Components/Header/Message";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/user/userSlice";
+import { loginUser } from "../../Redux/user/userSlice";
 
 const Login = () => {
   const [ email, setEmail ] = useState("");

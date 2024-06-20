@@ -134,7 +134,7 @@ export const deletePost = createAsyncThunk('post/delete', async (id, {rejectWith
 
 
 
- export const {openPopUp,closePopUp} = postSlice.actions
+ export const { openPopUp,closePopUp } = postSlice.actions
 
 export default postSlice.reducer
   

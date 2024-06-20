@@ -6,8 +6,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import Comments from "../Components/Comments"
 import Loader from "../Components/Loader"
 
-import { createComment, fetchPostComments } from "../redux/comment/commentSlice"
-import { closePopUp, deletePost, fetchPostById } from "../redux/post/postSlice"
+import { createComment, fetchPostComments } from "../Redux/comment/commentSlice"
+import { closePopUp, deletePost, fetchPostById } from "../Redux/post/postSlice"
 
 
 const PostModal = () => {
