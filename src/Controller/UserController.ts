@@ -39,17 +39,18 @@ export class UserController{
 
     async login(req:Request, res:Response){
         const {email, password} = req.body
-        const user = await User.findOne({email})
+        const user = await User.findOne({ email })
 
             if(!user){
-                return res.status(400).send({message: 'User not found'})
+                return res.status(400).send({ message: 'User not found' })
             }
 
             const checkPassword = await bycrpt.compareSync(password, user.password) // true
 
             if(!checkPassword){
-                return res.status(400).send({message: 'Inavlid Password'})
+                return res.status(400).send({ message: 'Invalid Password' })
             }
+            
             return res.json({
                 _id: user.id,
                 username: user.username,
